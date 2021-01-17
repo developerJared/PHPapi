@@ -2,7 +2,7 @@
 require 'bootstrap.php';
 
 $statement = <<<EOS
-    CREATE TABLE IF NOT EXISTS person (
+    CREATE TABLE IF NOT EXISTS users (
         id INT NOT NULL AUTO_INCREMENT,
         firstname VARCHAR(100) NOT NULL,
         lastname VARCHAR(100) NOT NULL,
@@ -10,14 +10,14 @@ $statement = <<<EOS
         secondparent_id INT DEFAULT NULL,
         PRIMARY KEY (id),
         FOREIGN KEY (firstparent_id)
-            REFERENCES person(id)
+            REFERENCES users(id)
             ON DELETE SET NULL,
         FOREIGN KEY (secondparent_id)
-            REFERENCES person(id)
+            REFERENCES users(id)
             ON DELETE SET NULL
     ) ENGINE=INNODB;
 
-    INSERT INTO person
+    INSERT INTO users
         (id, firstname, lastname, firstparent_id, secondparent_id)
     VALUES
         (1, 'Krasimir', 'Hristozov', null, null),
