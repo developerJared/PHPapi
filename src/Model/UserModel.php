@@ -1,7 +1,7 @@
 <?php
 namespace Src\Model;
 
-class Person {
+class User {
 
     private $db = null;
 
@@ -16,7 +16,7 @@ class Person {
             SELECT 
                 id, firstname, lastname, firstparent_id, secondparent_id
             FROM
-                person;
+                users;
         ";
 
         try {
@@ -39,7 +39,7 @@ class Person {
             SELECT 
                 id, firstname, lastname, firstparent_id, secondparent_id
             FROM
-                person
+                users
             WHERE id = ?;
         ";
 
@@ -61,7 +61,7 @@ class Person {
     public function insert(Array $input)
     {
         $statement = "
-            INSERT INTO person 
+            INSERT INTO users 
                 (firstname, lastname, firstparent_id, secondparent_id)
             VALUES
                 (:firstname, :lastname, :firstparent_id, :secondparent_id);
@@ -89,7 +89,7 @@ class Person {
     public function update($id, Array $input)
     {
         $statement = "
-            UPDATE person
+            UPDATE users
             SET 
                 firstname = :firstname,
                 lastname  = :lastname,
@@ -121,7 +121,7 @@ class Person {
     public function delete($id)
     {
         $statement = "
-            DELETE FROM person
+            DELETE FROM users
             WHERE id = :id;
         ";
 
